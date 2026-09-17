@@ -14,6 +14,7 @@ public class Main {
                 + " invalidas=" + resultado.getInvalidas());
         System.out.println("Facturacion=" + taller.facturacion());
         System.out.println("Por marca=" + taller.porMarca());
+        System.out.println("Por dispositivo=" + taller.porDispositivo());
 
         if (!resultado.getErrores().isEmpty()) {
             System.out.println("Errores=" + resultado.getErrores());

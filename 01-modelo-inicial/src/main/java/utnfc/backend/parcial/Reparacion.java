@@ -1,17 +1,17 @@
 package utnfc.backend.parcial;
 
 public class Reparacion {
-    private final String id;
-    private final String cliente;
-    private final String dispositivo;
-    private final String marca;
-    private final String estado;
-    private final int prioridad;
-    private final int horas;
-    private final double costoBase;
-    private final String garantia;
-    private final int repuestos;
-    private final String modalidad;
+    protected final String id;
+    protected final String cliente;
+    protected final String dispositivo;
+    protected final String marca;
+    protected final String estado;
+    protected final int prioridad;
+    protected final int horas;
+    protected final double costoBase;
+    protected final String garantia;
+    protected final int repuestos;
+    protected final String modalidad;
 
     public Reparacion(String id, String cliente, String dispositivo, String marca,
             int prioridad, int horas, String estado, double costoBase , String garantia, int repuestos, String modalidad ) {
@@ -41,18 +41,14 @@ public class Reparacion {
                 Double.parseDouble(campos[7]),campos[8], Integer.parseInt(campos[9]), campos[10]);
     }
 
-    public double calcularImporte(){
+    public double importe() {
         int manoDeObra = horas * 850;
         double descuento = 0.0;
         int recargoPrioridad = prioridad * 300;
         if(garantia.equals("SI")){
-             descuento = manoDeObra * 0.20;
+            descuento = manoDeObra * 0.20;
         }
         return costoBase + horas * 850 + prioridad * 300 - descuento;
-    }
-
-    public double importe() {
-        return costoBase + horas * 850 + prioridad * 300;
     }
 
     public String getId() {
@@ -88,7 +84,7 @@ public class Reparacion {
     }
 
     public boolean tieneGarantia() {
-            return "SI".equals(garantia);
+            return garantia.equals("SI");
     }
 
     public double getRepuestos() {

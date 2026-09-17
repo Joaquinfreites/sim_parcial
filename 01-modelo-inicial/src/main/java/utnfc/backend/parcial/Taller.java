@@ -25,4 +25,10 @@ public class Taller {
         return reparaciones.stream().collect(Collectors.groupingBy(
                 Reparacion::getMarca, TreeMap::new, Collectors.counting()));
     }
+    public long cantidadReparacionesEntregadas(){
+        return reparaciones.stream().filter(r-> r.getEstado().equals("ENTREGADA")).count();
+    }
+    public Map<String, Long> porDispositivo(){
+        return reparaciones.stream().collect(Collectors.groupingBy(Reparacion::getDispositivo, TreeMap::new, Collectors.counting()));
+    }
 }
