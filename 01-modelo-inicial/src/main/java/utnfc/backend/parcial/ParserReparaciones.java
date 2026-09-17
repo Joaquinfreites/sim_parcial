@@ -40,14 +40,10 @@ public class ParserReparaciones {
                         descartadas++;
                         continue;
                     }
-                    if  (!campos[8].equals("SI") && !campos[8].equals("N0")) {
-                        descartadas++;
-                        continue;
-                    }
                     if (!campos[6].equals("ABIERTA") && !campos[6].equals("LISTA")) {
                         throw new IllegalArgumentException("estado desconocido");
                     }
-                    if (!campos[10].equals("NORMAL") && !campos[10].equals("EXPRESS")) {
+                    if  (!campos[8].equals("SI") && !campos[8].equals("N0")) {
                         descartadas++;
                         continue;
                     }
@@ -55,9 +51,12 @@ public class ParserReparaciones {
                         descartadas++;
                         continue;
                     }
-
+                    if (!campos[10].equals("NORMAL") && !campos[10].equals("EXPRESS")) {
+                        descartadas++;
+                        continue;
+                    }
                     if(campos[10].equals("NORMAL")) {
-                        Reparacion reparacion = new ReparacionNormal(campos[0], campos[1], campos[2], campos[3],
+                        Reparacion reparacion = new Reparacion(campos[0], campos[1], campos[2], campos[3],
                                 Integer.parseInt(campos[4]), Integer.parseInt(campos[5]), campos[6],
                                 Double.parseDouble(campos[7]),campos[8], Integer.parseInt(campos[9]), campos[10]);
                     }

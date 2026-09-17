@@ -1,6 +1,6 @@
 package utnfc.backend.parcial;
 
-public abstract class Reparacion {
+public class Reparacion {
     private final String id;
     private final String cliente;
     private final String dispositivo;
@@ -36,12 +36,20 @@ public abstract class Reparacion {
         if (campos.length != 11) {
             throw new IllegalArgumentException("columnas incorrectas");
         }
-        return new ReparacionNormal(campos[0], campos[1], campos[2], campos[3],
+        return new Reparacion(campos[0], campos[1], campos[2], campos[3],
                 Integer.parseInt(campos[4]), Integer.parseInt(campos[5]), campos[6],
                 Double.parseDouble(campos[7]),campos[8], Integer.parseInt(campos[9]), campos[10]);
     }
 
-    public abstract  void calcularImporte();
+    public double calcularImporte(){
+        int manoDeObra = horas * 850;
+        double descuento = 0.0;
+        int recargoPrioridad = prioridad * 300;
+        if(garantia.equals("SI")){
+             descuento = manoDeObra * 0.20;
+        }
+        return costoBase + horas * 850 + prioridad * 300 - descuento;
+    }
 
     public double importe() {
         return costoBase + horas * 850 + prioridad * 300;

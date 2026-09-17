@@ -5,6 +5,8 @@ public class ReparacionExpress extends Reparacion{
         super(id, cliente, dispositivo, marca, prioridad, horas, estado, costoBase, garantia, repuestos, modalidad);
     }
     @Override
-    public void calcularImporte() {
+    public double calcularImporte() {
+        double  hola = 12.0;
+        return hola;
     }
 }
