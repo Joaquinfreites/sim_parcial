@@ -14,7 +14,7 @@ public class ReparacionExpress extends Reparacion {
         if (garantia.equals("SI")) {
             descuento = manoDeObra * 0.20;
         }
-        double importeNormal = costoBase + horas * 850 + prioridad * 300 - descuento;
+        double importeNormal = costoBase + horas * 850 + prioridad * 300 + repuestos - descuento;
         double importeExpress= importeNormal * 1.25;
         return importeExpress;
     }

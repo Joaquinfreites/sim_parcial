@@ -9,9 +9,26 @@ public class Reparacion {
     protected final int prioridad;
     protected final int horas;
     protected final double costoBase;
-    protected final String garantia;
-    protected final int repuestos;
-    protected final String modalidad;
+    protected  String garantia;
+    protected  int repuestos;
+    protected  String modalidad;
+
+    public Reparacion(String id, String cliente, String dispositivo, String marca,
+                      int prioridad, int horas, String estado, double costoBase ) {
+        if (id == null || id.isBlank() || cliente == null || cliente.isBlank()
+                || prioridad < 1 || prioridad > 3 || horas <= 0 || costoBase < 0) {
+            throw new IllegalArgumentException("datos invalidos");
+        }
+        this.id = id.strip();
+        this.cliente = cliente.strip();
+        this.dispositivo = dispositivo.strip();
+        this.marca = marca.strip();
+        this.prioridad = prioridad;
+        this.horas = horas;
+        this.estado = estado.strip();
+        this.costoBase = costoBase;
+
+    }
 
     public Reparacion(String id, String cliente, String dispositivo, String marca,
             int prioridad, int horas, String estado, double costoBase , String garantia, int repuestos, String modalidad ) {
@@ -48,7 +65,7 @@ public class Reparacion {
         if(garantia.equals("SI")){
             descuento = manoDeObra * 0.20;
         }
-        return costoBase + horas * 850 + prioridad * 300 - descuento;
+        return (costoBase + horas * 850 + prioridad * 300 + repuestos- descuento);
     }
 
     public String getId() {
@@ -84,7 +101,7 @@ public class Reparacion {
     }
 
     public boolean tieneGarantia() {
-            return garantia.equals("SI");
+            return "SI".equals(garantia);
     }
 
     public double getRepuestos() {
