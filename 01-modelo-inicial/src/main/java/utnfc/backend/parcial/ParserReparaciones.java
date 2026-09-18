@@ -40,14 +40,14 @@ public class ParserReparaciones {
                         descartadas++;
                         continue;
                     }
-                    if (!campos[6].equals("ABIERTA") && !campos[6].equals("LISTA")) {
+                    if (!campos[6].equals("ABIERTA") && !campos[6].equals("LISTA") && campos[6].equals("ENTREGADA")) {
                         throw new IllegalArgumentException("estado desconocido");
                     }
-                    if  (!campos[8].equals("SI") && !campos[8].equals("N0")) {
+                    if  (!campos[8].equals("SI") && !campos[8].equals("NO")) {
                         descartadas++;
                         continue;
                     }
-                    if (Integer.parseInt(campos[9]) <= 0){
+                    if (Integer.parseInt(campos[9]) < 0){
                         descartadas++;
                         continue;
                     }
@@ -56,14 +56,14 @@ public class ParserReparaciones {
                         continue;
                     }
                     if(campos[10].equals("NORMAL")) {
-                        Reparacion reparacion = new Reparacion(campos[0], campos[1], campos[2], campos[3],
+                        reparaciones.add(new Reparacion(campos[0], campos[1], campos[2], campos[3],
                                 Integer.parseInt(campos[4]), Integer.parseInt(campos[5]), campos[6],
-                                Double.parseDouble(campos[7]),campos[8], Integer.parseInt(campos[9]), campos[10]);
+                                Double.parseDouble(campos[7]),campos[8], Integer.parseInt(campos[9]), campos[10]));
                     }
                     if(campos[10].equals("EXPRESS")){
-                        Reparacion reparacion = new ReparacionExpress(campos[0], campos[1], campos[2], campos[3],
+                        reparaciones.add(new ReparacionExpress(campos[0], campos[1], campos[2], campos[3],
                                 Integer.parseInt(campos[4]), Integer.parseInt(campos[5]), campos[6],
-                                Double.parseDouble(campos[7]), campos[8], Integer.parseInt(campos[9]), campos[10]);
+                                Double.parseDouble(campos[7]), campos[8], Integer.parseInt(campos[9]), campos[10]));
                     }
                     reparaciones.add(Reparacion.desdeCampos(campos));
                 } catch (IllegalArgumentException error) {

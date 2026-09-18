@@ -11,10 +11,10 @@ class ParserReparacionesTest {
     @Test
     void leeDataset() {
         var resultado = assertDoesNotThrow(() -> new ParserReparaciones()
-                .leer(Path.of("C:\\Users\\freit\\IdeaProjects\\01-modelo-inicial\\01-modelo-inicial\\datos.csv")));
+                .leer(Path.of("datos/datos-parcial.csv")));
 
-        assertEquals(60, resultado.getLeidas());
-        assertEquals(54, resultado.getReparaciones().size());
-        assertEquals(6, resultado.getDescartadas());
+        assertEquals(140, resultado.getLeidas());
+        assertEquals(114, resultado.getReparaciones().size());
+        assertEquals(14, resultado.getDescartadas());
     }
 }

@@ -4,7 +4,7 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Path ruta = Path.of(args.length == 0 ? "datos/datos-parcial.csv" : args[0]);
+        Path ruta = Path.of(args.length == 0 ? "01-modelo-inicial/datos/datos-parcial.csv" : args[0]);
         ResultadoParseo resultado = new ParserReparaciones().leer(ruta);
         Taller taller = new Taller(resultado.getReparaciones());
 

@@ -14,7 +14,7 @@ public class Reparacion {
     protected  String modalidad;
 
     public Reparacion(String id, String cliente, String dispositivo, String marca,
-                      int prioridad, int horas, String estado, double costoBase ) {
+                      int prioridad, int horas, String estado, double costoBase) {
         if (id == null || id.isBlank() || cliente == null || cliente.isBlank()
                 || prioridad < 1 || prioridad > 3 || horas <= 0 || costoBase < 0) {
             throw new IllegalArgumentException("datos invalidos");
@@ -62,10 +62,7 @@ public class Reparacion {
         int manoDeObra = horas * 850;
         double descuento = 0.0;
         int recargoPrioridad = prioridad * 300;
-        if(garantia.equals("SI")){
-            descuento = manoDeObra * 0.20;
-        }
-        return (costoBase + horas * 850 + prioridad * 300 + repuestos- descuento);
+        return (costoBase + horas * 850 + prioridad * 300 + repuestos);
     }
 
     public String getId() {
